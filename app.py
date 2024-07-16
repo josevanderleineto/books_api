@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
+CORS(app)  # Permite CORS para todas as rotas da sua aplicação
 
 def init_db():
     conn = sqlite3.connect('books.db')
@@ -73,7 +75,7 @@ def add_book():
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO books (title, bookUrl, imageUrl, author)
-        VALUES (?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?)
     ''', (new_book['title'], new_book['bookUrl'], new_book['imageUrl'], new_book['author']))
     conn.commit()
     conn.close()
