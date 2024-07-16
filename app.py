@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS # type: ignore
+from flask_cors import CORS  # Importe o CORS
+
 import sqlite3
 
 app = Flask(__name__)
@@ -46,7 +47,8 @@ def init_db():
             INSERT INTO books (id, title, bookUrl, imageUrl, author)
             VALUES (?, ?, ?, ?, ?)
         ''', books)
-    conn.commit()
+        conn.commit()
+
     conn.close()
 
 @app.route('/books', methods=['GET'])
