@@ -1,9 +1,7 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
-CORS(app)  # Adiciona a configuração de CORS ao aplicativo
 
 @app.route('/books', methods=['GET'])
 def get_books():
